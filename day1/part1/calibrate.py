@@ -7,10 +7,7 @@ def main():
     output = 0
 
     for i in fileinput.input():
-        if i[0] == "+":
-            output += int(i[1:])
-        elif i[0] == "-":
-            output -= int(i[1:])
+        output += int(i)
 
     print(output)
 

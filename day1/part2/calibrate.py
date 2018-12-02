@@ -6,22 +6,16 @@ import fileinput
 def main():
     output = 0
     seen_frequencies = set()
-    keep_going = True
 
-    while keep_going:
+    while True:
         for i in fileinput.input():
-            if i[0] == "+":
-                output += int(i[1:])
-            elif i[0] == "-":
-                output -= int(i[1:])
+            output += int(i)
 
             if output in seen_frequencies:
-                keep_going = False
-                break
+                print(output)
+                return
 
             seen_frequencies.add(output)
-
-    print(output)
 
 
 if __name__ == "__main__":
