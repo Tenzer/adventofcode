@@ -1,7 +1,6 @@
-# Advent of Code 2018
+# Advent of Code
 
-This is my collection of solutions for the 2018 edition of [Advent of Code][]
-puzzles.
+This is my collection of solutions for the [Advent of Code][] puzzles.
 
 
 [Advent of Code]: https://adventofcode.com/
