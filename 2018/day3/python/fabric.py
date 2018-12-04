@@ -5,7 +5,7 @@ from collections import Counter
 
 
 def parse_spec(spec):
-    spec = spec.split(" ")
+    spec = spec.strip().split(" ")
     identifier = spec[0].lstrip("#")
     offsets = spec[2].strip(":").split(",")
     sizes = spec[3].split("x")
@@ -20,14 +20,16 @@ def parse_spec(spec):
 def generate_coords(offsets, size):
     for x in range(size[0]):
         for y in range(size[1]):
-            yield (x + offsets[0], y + offsets[1])
+            # Tuples are a bit faster than strings but use more memory 🤔
+            yield x + offsets[0], y + offsets[1]
+            # yield f"{x + offsets[0]}_{y + offsets[1]}"
 
 
 def part1():
     counter = Counter()
 
     for line in fileinput.input():
-        _, offsets, size = parse_spec(line.strip())
+        _, offsets, size = parse_spec(line)
 
         for coord in generate_coords(offsets, size):
             counter[coord] += 1
@@ -40,12 +42,11 @@ def part2():
     claims = dict()
 
     for line in fileinput.input():
-        claim_id, offsets, size = parse_spec(line.strip())
+        claim_id, offsets, size = parse_spec(line)
         claims[claim_id] = offsets, size
 
-        for x in range(size[0]):
-            for y in range(size[1]):
-                counter[(x + offsets[0], y + offsets[1])] += 1
+        for coord in generate_coords(offsets, size):
+            counter[coord] += 1
 
     single_squares = set()
     for key, value in counter.items():
