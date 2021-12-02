@@ -20,7 +20,7 @@ def part1() -> None:
 
         previous = i
 
-    print(f"Found a total of {increments} increments")
+    print(f"Part 1: {increments}")
 
 
 def part2() -> None:
@@ -49,7 +49,7 @@ def part2() -> None:
 
         previous_sum = current_sum
 
-    print(f"Found a total of {increments} increments when looking at sliding windows")
+    print(f"Part 2: {increments}")
 
 
 if __name__ == "__main__":
